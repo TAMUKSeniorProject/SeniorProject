@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <!-- Login and homepage both set in pages_controller file for now -->
+    <!-- Homepage set in pages_controller file for now -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <%= link_to root_path, class: "navbar-brand" do %>
         Javelina Community
@@ -24,8 +24,14 @@
         <!-- mr-auto will align contents left... ml-md-auto is another option to align left-->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <%= link_to login_path, class: "nav-link" do %>
+            <%= link_to new_user_session_path, class: "nav-link" do %>
               Log In<span class="sr-only">(current)</span>
+            <%end%>
+          </li>
+          
+          <li class="nav-item active">
+            <%= link_to new_user_registration_path, class: "nav-link" do %>
+              Sign Up<span class="sr-only">(current)</span>
             <%end%>
           </li>
         </ul>
