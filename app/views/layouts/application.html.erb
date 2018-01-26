@@ -9,6 +9,24 @@
   </head>
 
   <body>
+    <!-- Login and homepage both set in pages_controller file for now -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Javelina Community</a>
+      
+      <!--Adds navbar toggle when window is minimized-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- mr-auto will align contents left... ml-md-auto is another option to align left-->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/login">Log In<span class="sr-only">(current)</span> </a>
+          </li>
+      </div>
+    </nav>
+    
     <div class="container">
       <%= yield %>
     </div>
