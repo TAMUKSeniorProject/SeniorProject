@@ -23,17 +23,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- mr-auto will align contents left... ml-md-auto is another option to align left-->
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <%= link_to new_user_session_path, class: "nav-link" do %>
-              Log In<span class="sr-only">(current)</span>
-            <%end%>
-          </li>
-          
-          <li class="nav-item active">
-            <%= link_to new_user_registration_path, class: "nav-link" do %>
-              Sign Up<span class="sr-only">(current)</span>
-            <%end%>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do%>
+                Log Out
+              <%end%>
+            </li>
+          <% else %> 
+            <li class="nav-item active">
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                Log In<span class="sr-only">(current)</span>
+              <%end%>
+            </li>
+            
+            <li class="nav-item active">
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                Sign Up<span class="sr-only">(current)</span>
+              <%end%>
+            </li>
+          <%end%>
         </ul>
       </div>
     </nav>
