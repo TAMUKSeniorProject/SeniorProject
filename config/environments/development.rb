@@ -56,36 +56,26 @@ Rails.application.configure do
   
 
   #####
-  config.action_mailer.default_url_options = { :host => 'tamukseniorproject-natpeo.c9.io:80', :protocol => 'http' }
-  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    user_name:            'tamukseniorproject@gmail.com',
-    password:             'jarhwdxixxhhkjfh',
-    authentication:       :plain,
+    user_name:      ENV['SENDMAIL_USERNAME'],
+    password:       ENV['SENDMAIL_PASSWORD'],
+    domain:         ENV['MAIL_HOST'],
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
     enable_starttls_auto: true
   }
-  
-  # config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
+  # config.action_mailer.default_url_options = { host: ‘localhost’, port: 3000 }
   # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   user_name:      ENV['SENDMAIL_USERNAME'],
-  #   password:       ENV['SENDMAIL_PASSWORD'],
-  #   domain:         ENV['MAIL_HOST'],
-  #   address:       'smtp.gmail.com',
-  #   port:          '587',
-  #   authentication: :plain,
-  #   enable_starttls_auto: true
-  # }
- 
- 
- 
+  # config.action_mailer.smtp_settings = {:address => “localhost”, :port => 1025} 
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.delivery_method = :smtp
   # # change to true to allow email to be sent during development
-   config.action_mailer.perform_deliveries = true
-   config.action_mailer.raise_delivery_errors = true
-   config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default :charset => "utf-8"
 end
