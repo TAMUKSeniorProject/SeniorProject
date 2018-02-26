@@ -40,6 +40,11 @@ gem 'bootstrap', '~>4.0.0'
 # Use Devise for user authentication
 gem 'devise', '4.2.0'
 
+gem 'mailboxer'
+
+####
+gem 'rails-ujs', '~> 5.1.0.beta1'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
