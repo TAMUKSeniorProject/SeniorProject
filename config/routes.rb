@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   root to: 'pages#home'
+  #change default controller to one written in registrations_controller.rb
+  devise_for :users, controllers: {registrations: 'registrations'}
 end
  
