@@ -4,7 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
+         
+  has_many :discussions, dependent: :destroy
+  has_many :channels, through: :discussions
   
-  acts_as_messageable       
+  acts_as_messageable
+  
+  def name
+    "User #{id}"
+  end
+  
+  def mailboxer_email(object)
+    nil
+  end
   
 end
