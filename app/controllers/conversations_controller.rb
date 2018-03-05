@@ -1,7 +1,8 @@
 class ConversationsController < ApplicationController
+  
   def index
-    @conversations = User.mailbox.conversations
-    #@conversations = current_user.mailbox.conversations
+    @conversations = current_user.mailbox.conversations
+    #current_user.mailbox.conversations.first.becomes(::Conversation) 
   end
   
   def show

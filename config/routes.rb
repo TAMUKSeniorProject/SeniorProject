@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :discussions do
     resources :replies
   end
-  
-  resources :conversations do
+    
+    resources :conversations do
     resources :messages
   end
-    
+  
   root to: 'pages#home'
   #change default controller to one written in registrations_controller.rb
   devise_for :users, controllers: {registrations: 'registrations'}

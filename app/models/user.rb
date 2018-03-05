@@ -8,13 +8,17 @@ class User < ApplicationRecord
   has_many :discussions, dependent: :destroy
   has_many :channels, through: :discussions
   
+  extend Mailboxer::Models::Messageable::ActiveRecordExtension
+  #include Mailboxer::Models::Messageable
   acts_as_messageable
   
-  def name
+  def mailboxer_name
+    #self.name
     "User #{id}"
   end
   
   def mailboxer_email(object)
+    #self.email
     nil
   end
   
