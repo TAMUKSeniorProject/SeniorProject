@@ -45,6 +45,8 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 
 gem 'mailboxer'
 
+gem 'chosen-rails'
+
 #####
 # Gems from forum tutorial
 gem 'bulma-rails', '~>0.6.2'
