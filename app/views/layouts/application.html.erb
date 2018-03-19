@@ -25,6 +25,16 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item active">
+              <%= link_to discussions_path, class: "nav-link" do %>
+                Forum
+              <%end%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to mailbox_inbox_path, class: "nav-link" do %>
+                Inbox
+              <%end%>
+            </li>
+            <li class="nav-item active">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do%>
                 Log Out
               <%end%>

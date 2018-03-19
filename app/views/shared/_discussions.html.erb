@@ -1,9 +1,33 @@
 <div class = "row">
     <div class = "col-8">
-        <h3 class = "discussions">Latest Discussions</h3>
         <div class = "discussions">
-            <% @discussion.each do |discussion| %>
-                <div class
+            <% @discussions.each do |discussion| %>
+                <div class = "row">
+                    <div class = "col-12">
+                        <%= link_to discussion do %>
+                            <h3><%= discussion.title %></h3>
+                        <% end %>
+                        <div class="content">
+                            <%= truncate(discussion.content, length: 140) %>
+                            
+                            <p><em><small>Posted <%= time_ago_in_words(discussion.created_at) %> ago in
+                              <% if discussion.channel %>
+                                <%= link_to discussion.channel.channel, discussion.channel %>
+                              <% end %>
+                              by <%= discussion.user.username %>
+                              </small>
+                              </em>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Need to add user level check -->
+                    <div class="column has-text-right">
+                      <%= link_to 'Edit', edit_discussion_path(discussion), class:'button' %>
+                      <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+                    </div>
+                    
+                </div>
             <% end %>
         </div>
     </div>
