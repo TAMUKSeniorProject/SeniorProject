@@ -5,8 +5,8 @@ class RepliesController < ApplicationController
     
     def create
         #create a reply within the discussion and save userid to the reply
-        #@reply = @discussion.replies.create(reply_params)
-        @reply = @discussion.replies.create(params[:reply]).permit(:reply, :discussion_id)
+        @reply = @discussion.replies.create(reply_params)
+        #@reply = @discussion.replies.create(params[:reply]).permit(:reply, :discussion_id)
         @reply.user_id = current_user.id
         
         respond_to do |format|
@@ -58,6 +58,6 @@ class RepliesController < ApplicationController
     end
     
     def reply_params
-        params.require(:reply).permit(:reply)
+        params.require(:reply).permit(:reply, :discussion_id)
     end
 end
