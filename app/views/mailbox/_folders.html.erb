@@ -1,19 +1,14 @@
 <ul class="nav nav-pills nav-stacked">
   <li class="nav-item active">
-    <%= link_to mailbox_inbox_path, class:"nav-link" do  %>
+    <%= link_to mailbox_inbox_path, class:"nav-link btn btn-md" do  %>
       Inbox <%=unread_messages_count%>
     <% end %>
-  </li>
-
-  <li class="nav-item active">
-    <%= link_to mailbox_sent_path, class:"nav-link" do  %>
+    
+    <%= link_to mailbox_sent_path, class:"nav-link btn btn-md" do %>
       Sent
     <% end %>
-  </li>
-
-
-  <li class="nav-item active">
-    <%= link_to mailbox_trash_path, class:"nav-link" do  %>
+    
+    <%= link_to mailbox_trash_path, class:"nav-link btn btn-md" do  %>
       Trash
     <% end %>
   </li>
