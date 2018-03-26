@@ -1,0 +1,11 @@
+<h1>Editing reply</h1>
+
+<%= simple_form_for([@discussion, @reply]) do |f| %>
+  <div class= "form-group">
+    <%= f.text_area :reply, class: 'form-control', rows: '3', wrapper: false %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "Update Reply", class: 'btn btn-secondary' %>
+  </div>    
+<% end %>

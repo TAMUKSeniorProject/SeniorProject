@@ -14,7 +14,8 @@
       </div>
     </div>
     <h5><%= @discussion.replies.count %> Replies</h5>
-  
+
+    <!-- javascript rendering done in create.js.erb file-->
     <div id="discussion-replies">
       <%= render @discussion.replies %>
     </div>
