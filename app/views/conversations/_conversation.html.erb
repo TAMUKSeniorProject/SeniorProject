@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="col-md-9">
+  <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
       </div>
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-<div class="col-md-9 text-right">
+<div class="col-md-8 text-right">
     <% if conversation.is_trashed?(current_user) %>
         <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
     <% else %>

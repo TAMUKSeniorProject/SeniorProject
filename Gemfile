@@ -39,6 +39,7 @@ gem 'jbuilder', '2.5.0'
 # Use twitter Bootstrap
 gem 'bootstrap', '~>4.0.0'
 
+
 # Use Devise for user authentication
 ### Formerly gem 'devise', '4.2.0'
 gem 'devise', '~> 4.4', '>= 4.4.1'

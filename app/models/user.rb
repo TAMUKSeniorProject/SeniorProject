@@ -11,14 +11,11 @@ class User < ApplicationRecord
   acts_as_messageable
   
   def mailboxer_name
-    #self.name
-    #"User #{id}"
     username
   end
   
   def mailboxer_email(object)
     self.email
-    #nil
   end
   
 end
