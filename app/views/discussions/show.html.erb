@@ -7,10 +7,10 @@
           by <%= @discussion.user.username %>
         </p></em></medium>
         <div class="content"><%= markdown(@discussion.content) %></div>
-        <!-- check if admin -->
+        <% if discussion_author(@discussion) %>
           <%= link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'btn btn-outline-secondary'%>
           <%= link_to 'Delete', discussion_path(@discussion), method: :delete, data: { confirm: "Delete discussion?" }, class:'btn btn-outline-secondary' %>
-        <!-- end check for admin -->
+        <% end %>
       </div>
     </div>
     <h5><%= @discussion.replies.count %> Replies</h5>
