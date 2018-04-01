@@ -1,5 +1,5 @@
 <h1>Channels</h1>
-
+<% if has_role?(:admin) %>
 <table class = "table">
   <thead>
     <tr>
@@ -22,4 +22,7 @@
 
 <br>
 
+<% else %>
+  <p class="has-text-center">Sorry! You don't have access this page.</p>
 <%= link_to 'New Channel', new_channel_path %>
+<% end %>
