@@ -1,15 +1,25 @@
-<ul class="nav nav-pills nav-stacked">
-  <li class="nav-item active">
-    <%= link_to mailbox_inbox_path, class:"nav-link btn btn-md" do  %>
-      Inbox <%=unread_messages_count%>
-    <% end %>
-    
-    <%= link_to mailbox_sent_path, class:"nav-link btn btn-md" do %>
-      Sent
-    <% end %>
-    
-    <%= link_to mailbox_trash_path, class:"nav-link btn btn-md" do  %>
-      Trash
-    <% end %>
-  </li>
-</u1>
+
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <%= link_to mailbox_inbox_path, class:"nav-link btn btn-md" do  %>
+          Inbox <%=unread_messages_count%>
+        <% end %>
+      </li>
+      
+      <li class="nav-item">
+       <%= link_to mailbox_sent_path, class:"nav-link btn btn-md" do %>
+         Sent
+       <% end %>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to mailbox_trash_path, class:"nav-link btn btn-md" do  %>
+          Trash
+        <% end %>
+      </li>
+      
+    </ul>
+  </div>
+</div>
