@@ -1,28 +1,37 @@
 <div class="row">
   <div class="spacer"></div>
-  <div class="col-md-2">
-    <%= link_to "Compose", new_conversation_path, class: "btn btn-success btn-md" %>
-    <div class="spacer"></div>
-  </div>
-
-  <div class="col-md-10">
-    <div class="panel panel-default">
-      <div class="panel-body">
+  <div class="col-10">
+    <div class="card-light">
+      <div class="card-body">
         <%= render 'mailbox/folders' %>
       </div>
     </div>
   </div>
 
-  <div class="col-md-10">
-    <div class="panel panel-default">
-      <div class="panel-body">
+  <div class="spacer"></div>
+  <div class="col-2">
+    <%= link_to "Compose", new_conversation_path, class: "btn btn-lg btn-success" %>
+  </div>  
+  
+  <div class="col-md-12">
+      <div class="card-body">
          <% if is_conversation %>
+           <div class="card">
+             <div class="card-body">
               <%= render 'conversations/form' %>
+              </div>
+            </div>
          <% else %>
+           <div class="card-light">
+             <div class="card-body">
+             <div class="form-group">
              <%= render partial: 'conversations/conversation', collection: messages %>
-         <% end %>   
+             </div>
+            </div>
+            </div>
+         <% end %>
       </div>
     </div>
-  </div>
+
 
 </div>

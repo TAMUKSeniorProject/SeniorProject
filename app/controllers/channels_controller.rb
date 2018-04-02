@@ -1,6 +1,9 @@
 class ChannelsController < ApplicationController
+  include ApplicationHelper
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
-
+  #prevent non-admin users from trying to update/create/edit/etc channels
+  before_action :admin_user_only, except: [:show]
+  
   # GET /channels
   # GET /channels.json
   def index
@@ -74,5 +77,9 @@ class ChannelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def channel_params
       params.require(:channel).permit(:channel)
+    end
+    
+    def admin_user_only
+      redirect_to(root_url) unless has_role?(:admin)
     end
 end

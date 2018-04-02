@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   #discussion categories
   resources :channels
 
-  get 'messages/new'
-  get 'conversations/show'
-  get 'conversations/new'
+  # get 'messages/new'
+  # get 'conversations/show'
+  # get 'conversations/new'
 
   #used to get a nested view of replies(comments) within a discussion(forum thread).
   resources :discussions do

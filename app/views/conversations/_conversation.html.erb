@@ -1,39 +1,37 @@
   <div class="col-md-12">
     <div class="card">
-      <div class="card-body">
+      <div class="card-header">
          <h4 class="media-heading">
           <%= conversation.originator.mailboxer_name %> <br>
           <small><b>Subject: </b><%= conversation.subject %></small><br>
           <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
          </h4>    
       </div>
-      <div class="card-header">
+      <div class="card-body">
          <%= truncate conversation.messages.last.body, length: 145 %>
          <%= link_to "View", conversation_path(conversation)  %>
     
-    <div class="card-footer">
+    <div class="card-body">
         <!-- Reply Form -->
         <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
             <div class="form-group">
               <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
             </div>
             <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
+            
+            <div class="col-13 text-right">
+                <% if conversation.is_trashed?(current_user) %>
+                    <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
+                <% else %>
+                    <%= link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
+                        data: {confirm: 'Are you sure?'} %>
+            </div>
+            <% end %>
         <% end %>
         <div class="clearfix"></div>
       </div>
-
-    
-    </div>
+     </div>
   </div>
 
-
-<div class="col-md-12 text-right">
-    <% if conversation.is_trashed?(current_user) %>
-        <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
-    <% else %>
-        <%= link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
-                    data: {confirm: 'Are you sure?'} %>
-    <% end %>
-  </div>
 </div>
 </div>

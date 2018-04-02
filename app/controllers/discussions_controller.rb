@@ -1,4 +1,5 @@
 class DiscussionsController < ApplicationController
+  include ApplicationHelper
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
   before_action :find_channels, only: [:index, :show, :new, :edit]
   # except on the index and show views, you need to be logged in as a user.
@@ -23,6 +24,8 @@ class DiscussionsController < ApplicationController
 
   # GET /discussions/1/edit
   def edit
+    #prevent users from trying to manually change someone else's discussion post...unless they are an admin user.
+    redirect_to(root_url) unless @discussion.user_id == current_user.id || has_role?(:admin)
   end
 
   # POST /discussions
@@ -79,4 +82,5 @@ class DiscussionsController < ApplicationController
     def discussion_params
       params.require(:discussion).permit(:title, :content, :channel_id)
     end
+    
 end
