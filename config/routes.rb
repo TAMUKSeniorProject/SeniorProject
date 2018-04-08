@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :discussions do
     resources :replies
   end
+  get 'tags/:tag', to: 'discussions#index', as: "tag"
     
     resources :conversations do
       member do

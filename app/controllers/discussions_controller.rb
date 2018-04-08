@@ -8,7 +8,11 @@ class DiscussionsController < ApplicationController
   # GET /discussions
   # GET /discussions.json
   def index
-    @discussions = Discussion.all.order('created_at desc')
+    if params[:tag]
+      @discussions = Discussion.tagged_with(params[:tag]).order('created_at desc')
+    else
+      @discussions = Discussion.all.order('created_at desc')
+    end
   end
 
   # GET /discussions/1
@@ -80,7 +84,7 @@ class DiscussionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discussion_params
-      params.require(:discussion).permit(:title, :content, :channel_id)
+      params.require(:discussion).permit(:title, :content, :channel_id, :all_tags)
     end
     
 end
