@@ -6,6 +6,8 @@ class Discussion < ApplicationRecord
     # You cannot submit a discussion post without having the title and content be filled
     validates :title, :content, presence: true
     resourcify
+    
+    TOPICS = ['Personal Ad', 'Club Meeting', 'Free Food', 'Food Sale', 'Bake Sale', 'Roommate']
     acts_as_taggable
-    acts_as_taggable_on :discussion_tags
+    acts_as_taggable_on :topics
 end

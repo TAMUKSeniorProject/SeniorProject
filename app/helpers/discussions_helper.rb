@@ -7,4 +7,8 @@ module DiscussionsHelper
     def reply_author(reply)
         user_signed_in? && current_user.id == reply.user_id
     end
+    
+    def valid_topics
+        Discussion::TOPICS.map{ |m| [ m ]}
+    end
 end

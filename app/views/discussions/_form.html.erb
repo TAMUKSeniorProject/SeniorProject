@@ -17,10 +17,12 @@
     <%= f.input_field :channel_id, collection:@channels.map { |c| [c.channel, c.id] }, prompt: "Select channel" %>
   </div>
   
-  <div class= "form-group">
-    <%= f.label :tag_list, "Tags (separated by commas)" %>
-    <%= f.input_field :tag_list, class: 'form-control' %>
-  </div>
+    <%= f.collection_check_boxes(:topic_list, valid_topics, :first, :first) do |b| %>
+      
+      <div class="form-check">
+        <label class="form-check-label"><%= b.check_box class: 'form-check-input' %> <%= b.value %></label>&nbsp;&nbsp;
+      </div>
+    <% end %>
   <br/>
   
   <div class="form-actions form-group">
