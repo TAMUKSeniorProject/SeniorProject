@@ -6,4 +6,6 @@ class Discussion < ApplicationRecord
     # You cannot submit a discussion post without having the title and content be filled
     validates :title, :content, presence: true
     resourcify
+    acts_as_taggable
+    acts_as_taggable_on :discussion_tags
 end

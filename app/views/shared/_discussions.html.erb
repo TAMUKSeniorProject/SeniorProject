@@ -29,6 +29,7 @@
                           <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary" %>
                         </div>
                     <% end %>
+                    <p>Tags: <%= raw(discussion.tag_list.map{|t| link_to t, tag_path(t) }.join(', ')) %></p>
                 </div>
                 <br/>
             <% end %>

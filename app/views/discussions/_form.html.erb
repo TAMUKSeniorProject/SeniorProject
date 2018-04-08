@@ -16,6 +16,11 @@
     <%= f.label :channel %>
     <%= f.input_field :channel_id, collection:@channels.map { |c| [c.channel, c.id] }, prompt: "Select channel" %>
   </div>
+  
+  <div class= "form-group">
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.input_field :tag_list, class: 'form-control' %>
+  </div>
   <br/>
   
   <div class="form-actions form-group">

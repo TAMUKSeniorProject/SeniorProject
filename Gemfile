@@ -61,7 +61,7 @@ gem 'coderay', '~> 1.1', '>= 1.1.2'
 
 # End gems from forum tutorial
 #####
-
+gem 'acts-as-taggable-on', '~> 4.0'
 ####
 gem 'rails-ujs', '~> 5.1.0.beta1'
 
