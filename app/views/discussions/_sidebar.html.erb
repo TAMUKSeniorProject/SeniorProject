@@ -9,3 +9,13 @@
 <% if has_role?(:admin) %>
     <%= link_to 'New Channel', new_channel_path, class:"btn btn-info" %>
 <% end %>
+
+
+
+<%= search_form_for @q do |f| %>
+    <%= f.label :title_or_content_cont %>
+    <%= f.search_field :title_or_content_cont %>
+    <%= f.submit %>
+<% end %>
+<!--<input type="text" name="query" id="query" placeholder= "I want to find…">-->
+<!--<input type="submit" name="commit" value="Search" class = "btn btn-default">-->

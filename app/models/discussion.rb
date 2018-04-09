@@ -1,4 +1,5 @@
 class Discussion < ApplicationRecord
+    #include PgSearch
     belongs_to :channel
     belongs_to :user
     has_many :replies, dependent: :destroy
@@ -10,4 +11,5 @@ class Discussion < ApplicationRecord
     TOPICS = ['Personal Ad', 'Club Meeting', 'Free Food', 'Food Sale', 'Bake Sale', 'Roommate']
     acts_as_taggable
     acts_as_taggable_on :topics
+    #pg_search_scope :quick_search, against: [:title, :content], associated_against: {topics: [:name]}
 end

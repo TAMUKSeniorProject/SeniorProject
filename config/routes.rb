@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   
   get 'tags/:tag', to: 'discussions#index', as: :tag
   
+  
   root to: 'pages#home'
   #change default controller to one written in registrations_controller.rb
   devise_for :users, controllers: {registrations: 'registrations'}
