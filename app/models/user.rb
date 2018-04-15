@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
          
+  has_many :notifications, foreign_key: :recipient_id
+  
   has_many :discussions, dependent: :destroy
   has_many :channels, through: :discussions
   

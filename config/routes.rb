@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'conversations/_conversation'
-
   get 'conversations/_messages'
   get 'conversations/_form'
   get 'mailbox/_folder_view'
@@ -12,15 +11,12 @@ Rails.application.routes.draw do
 
   #discussion categories
   resources :channels
-
-  # get 'messages/new'
-  # get 'conversations/show'
-  # get 'conversations/new'
-
   #used to get a nested view of replies(comments) within a discussion(forum thread).
   resources :discussions do
     resources :replies
   end
+    
+    resources :notifications
     
     resources :conversations do
       member do
