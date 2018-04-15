@@ -7,6 +7,7 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.json
   def index
+    @q = Discussion.ransack(params[:q])
     @channels = Channel.all
     @discussions = Discussion.all.order('created_at desc')
   end
@@ -14,6 +15,7 @@ class ChannelsController < ApplicationController
   # GET /channels/1
   # GET /channels/1.json
   def show
+    @q = Discussion.ransack(params[:q])
     # We want the column channel_id from the discussions table to match the current channel id
     @discussions = Discussion.where('channel_id = ?', @channel.id)
     @channels = Channel.all

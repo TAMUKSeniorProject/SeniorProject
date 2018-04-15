@@ -19,6 +19,7 @@ class DiscussionsController < ApplicationController
       @discussions = @q.result(distinct: true)
     else
       @discussions = Discussion.all.order('created_at desc')
+      #@discussions = Discussion.joins(:users).where(users: { id: current_user.id }).order('discussions.created_at desc')
     end
   end
 

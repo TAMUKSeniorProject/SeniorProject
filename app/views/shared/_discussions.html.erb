@@ -1,10 +1,9 @@
 <div class = "row">
     <div class = "col-10">
-        
         <div class = "discussions">
             <% @discussions.each do |discussion| %>
                 <div class = "row">
-                    
+                
                     <div class = "col-9">
                         <%= link_to discussion do %>
                             <h3><%= discussion.title %></h3>
