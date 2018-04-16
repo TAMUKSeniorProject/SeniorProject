@@ -63,6 +63,7 @@ gem 'coderay', '~> 1.1', '>= 1.1.2'
 #####
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'ransack'
+gem "simple_calendar", "~> 2.0"
 ###gem 'pg_search'
 ####
 gem 'rails-ujs', '~> 5.1.0.beta1'
