@@ -26,6 +26,20 @@
         <!-- mr-auto will align contents left... ml-md-auto is another option to align left-->
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
+          
+          <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications_controller/index", formats: [:json] %>'>
+          <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon is-small"><i class="fas fa-bell"></i></span> <span data-behavior="unread-count"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+            <!--
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            -->
+          </div>
+        </li>
+        
             <li class="nav-item active">
               <%= link_to discussions_path, class: "nav-link" do %>
                 Forum

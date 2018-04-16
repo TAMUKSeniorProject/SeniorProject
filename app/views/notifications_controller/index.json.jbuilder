@@ -1,2 +1,5 @@
-<h1>NotificationsController#index.json.jbuilder</h1>
-<p>Find me in app/views/notifications_controller/index.json.jbuilder.html.erb</p>
+json.array! @notifications do |notification|
+  json.id notification.id
+  json.unread !notification.read_at?
+  json.template render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html]
+end

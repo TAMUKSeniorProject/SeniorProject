@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'mailbox/trash'
   get 'mailbox/sent'
   get 'mailbox/inbox'
+  
+
 
   #discussion categories
   resources :channels
@@ -16,7 +18,11 @@ Rails.application.routes.draw do
     resources :replies
   end
     
-    resources :notifications
+    resources :notifications do
+      collection do
+        post :mark_as_read
+      end
+    end
     
     resources :conversations do
       member do
