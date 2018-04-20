@@ -40,5 +40,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations'}
   
   get 'calendar' => 'calendar#index'
+  get 'moderation' => 'moderation#index'
 end
  

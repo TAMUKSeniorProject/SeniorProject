@@ -1,0 +1,38 @@
+<div class = "row">
+    <div class = "col-10">
+        <div class = "discussions">
+            <% @discussions.each do |discussion| %>
+                <div class = "row">
+                
+                    <div class = "col-9">
+                        <%= link_to discussion do %>
+                            <h3><%= discussion.title %></h3>
+                        <% end %>
+                        <div class="content">
+                            <%= truncate(strip_markdown(discussion.content), length: 140) %>
+                            
+                            <p><em><small>Posted <%= time_ago_in_words(discussion.created_at) %> ago in
+                              <% if discussion.channel %>
+                                <%= link_to discussion.channel.channel, discussion.channel %>
+                              <% end %>
+                              by <%= discussion.user.username %>
+                              </small>
+                              </em>
+                            </p>
+                            <p>Tags: <%= raw(discussion.topic_list.map{|t| link_to t, tag_path(t) }.join(', ')) %></p>
+                        </div>
+                    </div>
+                    
+                    <% if discussion_author(discussion) || has_role?(:admin) %>
+                        <div class= "col-2">
+                          <%= link_to 'Edit', edit_discussion_path(discussion), class:'btn btn-outline-secondary' %>
+                          <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary" %>
+                        </div>
+                    <% end %>
+                </div>
+                <br/>
+            <% end %>
+        </div>
+        
+    </div>
+</div>
