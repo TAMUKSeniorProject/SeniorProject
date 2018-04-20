@@ -1,3 +1,19 @@
-<%= month_calendar do |date| %>
-  <%= date %>
+<%= week_calendar number_of_weeks: 2, events: @discussions do |date, discussions| %>
+  <%= date.day %>
+      <br>
+      <% i = 0 %>
+      <% discussions.each do |discussions| %>
+        <% i = i + 1 %>
+        
+        <% if i > 5 %>
+          To see more events for today, click here
+          
+        <% else %>
+          <%= link_to discussions do %>
+              <%= discussions.title %>
+          <% end %>
+        <% end %>
+        
+        <br>
+      <% end %>
 <% end %>

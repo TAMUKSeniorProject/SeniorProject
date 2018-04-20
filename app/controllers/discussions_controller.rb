@@ -11,7 +11,6 @@ class DiscussionsController < ApplicationController
     @q = Discussion.ransack(params[:q])
     if params[:tag]
       @discussions = Discussion.tagged_with(params[:tag]).order('created_at desc')
-    
     # elsif params[:query].present?
     #   @discussions = Discussion.quick_search(params[:query]).order('created_at desc')
     
@@ -100,7 +99,7 @@ class DiscussionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discussion_params
-      params.require(:discussion).permit(:title, :content, :channel_id, :topic_list => [])
+      params.require(:discussion).permit(:title, :content, :channel_id, :start_time, :topic_list => [])
     end
     
 end

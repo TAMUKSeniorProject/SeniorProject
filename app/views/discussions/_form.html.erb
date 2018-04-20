@@ -17,12 +17,17 @@
     <%= f.input_field :channel_id, collection:@channels.map { |c| [c.channel, c.id] }, prompt: "Select channel" %>
   </div>
   
-    <%= f.collection_check_boxes(:topic_list, valid_topics, :first, :first) do |b| %>
-      
-      <div class="form-check">
-        <label class="form-check-label"><%= b.check_box class: 'form-check-input' %> <%= b.value %></label>&nbsp;&nbsp;
-      </div>
-    <% end %>
+  <p>Want your post to appear on our calendar? Fill in the event date here</p>
+  <div class= "form-group">
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time, include_blank: true %>
+  </div>
+  
+  <%= f.collection_check_boxes(:topic_list, valid_topics, :first, :first) do |b| %>
+    <div class="form-check">
+      <label class="form-check-label"><%= b.check_box class: 'form-check-input' %> <%= b.value %></label>&nbsp;&nbsp;
+    </div>
+  <% end %>
   <br/>
   
   <div class="form-actions form-group">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409152949) do
+ActiveRecord::Schema.define(version: 20180420013750) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "channel"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180409152949) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "channel_id"
+    t.datetime "start_time"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
