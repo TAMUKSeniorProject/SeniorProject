@@ -1,9 +1,9 @@
 class DiscussionsController < ApplicationController
   include ApplicationHelper
-  before_action :set_discussion, only: [:show, :edit, :update, :destroy]
+  before_action :set_discussion, only: [:show, :edit, :update, :destroy, :reviewDis]
   before_action :find_channels, only: [:index, :show, :new, :edit]
   # except on the index and show views, you need to be logged in as a user.
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :moderate]
   
   # GET /discussions
   # GET /discussions.json
@@ -19,7 +19,7 @@ class DiscussionsController < ApplicationController
     else
       @discussions = Discussion.all.order('created_at desc')
       #@discussions = Discussion.joins(:users).where(users: { id: current_user.id }).order('discussions.created_at desc')
-      #@discussions = Discussion.joins(:users).where(users: { first_post_approved: true }).order('discussions.created_at desc')
+      #@discussions = Discussion.joins(:user).where(users: { first_post_approved: true }).order('discussions.created_at desc')
       #@user = User.find(current_user.id)
       #@discussions = @user.discussion.all.order('created_at desc')
     end
@@ -87,6 +87,10 @@ class DiscussionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # def moderate
+  #   @discussions = Discussion.joins(:user).where(users: {first_post_approved: false}).order('discussions.created_at desc')
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

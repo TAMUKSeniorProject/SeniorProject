@@ -44,8 +44,10 @@ gem 'bootstrap', '~>4.0.0'
 ### Formerly gem 'devise', '4.2.0'
 gem 'devise', '~> 4.4', '>= 4.4.1'
 
+#mailboxer for private messaging
 gem 'mailboxer'
 
+#for choice of recipients in composing private messages
 gem 'chosen-rails'
 
 #####

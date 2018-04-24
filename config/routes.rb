@@ -16,6 +16,13 @@ Rails.application.routes.draw do
   #used to get a nested view of replies(comments) within a discussion(forum thread).
   resources :discussions do
     resources :replies
+    # collection do
+    #   get 'moderate'
+    # end
+    # member do
+    #   post :approve_fp
+    #   get :reviewDis
+    # end
   end
     
     resources :notifications do
@@ -25,6 +32,9 @@ Rails.application.routes.draw do
     end
     
     resources :conversations do
+      collection do
+        delete :empty_trash
+      end
       member do
         post :reply
         post :trash
@@ -40,6 +50,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations'}
   
   get 'calendar' => 'calendar#index'
+  
+  # resources :moderations
   get 'moderation' => 'moderation#index'
+  get '/moderation/:id', to: 'moderation#show'
+  post 'moderation/approve_fp'
 end
  
