@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
   end
   
   def empty_trash
-    @mailbox.trash.each do |conversation|
+    current_user.mailbox.trash.each do |conversation|
       conversation.receipts_for(current_user).update_all(deleted: true)
     end
     flash[:success] = 'Your trash was cleaned!'

@@ -1,1 +1,3 @@
 <%= render partial: 'mailbox/folder_view', locals: { is_conversation: false, messages: @trash } %>
+<%= link_to 'Empty Trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+                        data: {confirm: "Are you sure ?" } %>
