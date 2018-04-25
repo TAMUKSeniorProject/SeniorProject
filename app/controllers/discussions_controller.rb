@@ -1,9 +1,9 @@
 class DiscussionsController < ApplicationController
   include ApplicationHelper
-  before_action :set_discussion, only: [:show, :edit, :update, :destroy, :reviewDis]
+  before_action :set_discussion, only: [:show, :edit, :update, :destroy, :approve_fp]
   before_action :find_channels, only: [:index, :show, :new, :edit]
   # except on the index and show views, you need to be logged in as a user.
-  before_action :authenticate_user!, except: [:index, :show, :moderate]
+  before_action :authenticate_user!, except: [:index, :show, :approve_fp]
   
   # GET /discussions
   # GET /discussions.json
@@ -17,9 +17,9 @@ class DiscussionsController < ApplicationController
     elsif params[:q]
       @discussions = @q.result(distinct: true)
     else
-      @discussions = Discussion.all.order('created_at desc')
+      #@discussions = Discussion.all.order('created_at desc')
       #@discussions = Discussion.joins(:users).where(users: { id: current_user.id }).order('discussions.created_at desc')
-      #@discussions = Discussion.joins(:user).where(users: { first_post_approved: true }).order('discussions.created_at desc')
+      @discussions = Discussion.joins(:user).where(users: { first_post_approved: true }).order('discussions.created_at desc')
       #@user = User.find(current_user.id)
       #@discussions = @user.discussion.all.order('created_at desc')
     end
@@ -91,6 +91,13 @@ class DiscussionsController < ApplicationController
   # def moderate
   #   @discussions = Discussion.joins(:user).where(users: {first_post_approved: false}).order('discussions.created_at desc')
   # end
+  
+  def approve_fp
+    #redirect_to root_url
+    user = User.joins(:discussions).where(discussions: {id: @discussion.id})
+    user.update_all(:first_post_approved => true)
+    redirect_to moderation_path
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

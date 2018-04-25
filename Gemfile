@@ -50,6 +50,10 @@ gem 'mailboxer'
 #for choice of recipients in composing private messages
 gem 'chosen-rails'
 
+#for pagination
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+
 #####
 # Gems from forum tutorial
 gem 'bulma-rails', '~>0.6.2'

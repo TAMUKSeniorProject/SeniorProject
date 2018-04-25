@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     # collection do
     #   get 'moderate'
     # end
-    # member do
-    #   post :approve_fp
+    member do
+      post :approve_fp
     #   get :reviewDis
-    # end
+    end
   end
     
     resources :notifications do
