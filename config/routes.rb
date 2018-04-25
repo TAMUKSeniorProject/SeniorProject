@@ -9,19 +9,13 @@ Rails.application.routes.draw do
   get 'mailbox/sent'
   get 'mailbox/inbox'
   
-
-
   #discussion categories
   resources :channels
   #used to get a nested view of replies(comments) within a discussion(forum thread).
   resources :discussions do
     resources :replies
-    # collection do
-    #   get 'moderate'
-    # end
     member do
       post :approve_fp
-    #   get :reviewDis
     end
   end
     

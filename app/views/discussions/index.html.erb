@@ -21,4 +21,8 @@
       
     </div>
   </div>
+  <div class="page_info">
+      <%= page_entries_info @discussions %>
+    </div>
+  <%= will_paginate(@discussions, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
 <!--</div> -->

@@ -10,16 +10,16 @@ class DiscussionsController < ApplicationController
   def index
     @q = Discussion.ransack(params[:q])
     if params[:tag]
-      @discussions = Discussion.tagged_with(params[:tag]).order('created_at desc')
+      @discussions = Discussion.tagged_with(params[:tag]).order('created_at desc').page params[:page]
     # elsif params[:query].present?
     #   @discussions = Discussion.quick_search(params[:query]).order('created_at desc')
     
     elsif params[:q]
-      @discussions = @q.result(distinct: true)
+      @discussions = @q.result(distinct: true).page params[:page]
     else
       #@discussions = Discussion.all.order('created_at desc')
       #@discussions = Discussion.joins(:users).where(users: { id: current_user.id }).order('discussions.created_at desc')
-      @discussions = Discussion.joins(:user).where(users: { first_post_approved: true }).order('discussions.created_at desc')
+      @discussions = Discussion.joins(:user).where(users: { first_post_approved: true }).order('discussions.created_at desc').paginate(:page => params[:page], :per_page => 10)
       #@user = User.find(current_user.id)
       #@discussions = @user.discussion.all.order('created_at desc')
     end
@@ -87,10 +87,6 @@ class DiscussionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  # def moderate
-  #   @discussions = Discussion.joins(:user).where(users: {first_post_approved: false}).order('discussions.created_at desc')
-  # end
   
   def approve_fp
     redirect_to(root_url) unless has_role?(:admin)
