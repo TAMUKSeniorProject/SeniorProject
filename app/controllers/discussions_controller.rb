@@ -93,7 +93,7 @@ class DiscussionsController < ApplicationController
   # end
   
   def approve_fp
-    #redirect_to root_url
+    redirect_to(root_url) unless has_role?(:admin)
     user = User.joins(:discussions).where(discussions: {id: @discussion.id})
     user.update_all(:first_post_approved => true)
     redirect_to moderation_path

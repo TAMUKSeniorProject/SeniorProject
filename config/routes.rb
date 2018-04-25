@@ -53,7 +53,5 @@ Rails.application.routes.draw do
   
   # resources :moderations
   get 'moderation' => 'moderation#index'
-  get '/moderation/:id', to: 'moderation#show'
-  post 'moderation/approve_fp'
 end
  
