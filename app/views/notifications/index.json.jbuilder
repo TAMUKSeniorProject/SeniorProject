@@ -9,5 +9,5 @@ json.array! @notifications do |notification|
   #json.notifiable do #notification.notifiable
     #json.type "a #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
   #end
-  #json.url forum_thread_path(notification.notifiable.forum_thread, anchor: dom_id(notification.notifiable))
+  #json.url discussion_path(notification.notifiable.id, anchor: dom_id(notification.notifiable))
 end

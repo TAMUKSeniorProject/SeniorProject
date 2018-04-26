@@ -12,6 +12,12 @@ class RepliesController < ApplicationController
         
         respond_to do |format|
             if @reply.save
+                ####
+                (@discussion.users.uniq - [current_user]).each do |user|
+                    Notification.create(recipient: user, actor: current_user, action: "commented", notifiable: @discussion)
+                end
+                
+                ####
                 format.html {redirect_to discussion_path(@discussion)}
                 format.js # render create.js.erb
     
