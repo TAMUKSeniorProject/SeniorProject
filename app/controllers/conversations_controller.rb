@@ -3,11 +3,11 @@ class ConversationsController < ApplicationController
   def new
   end
   
-  require 'will_paginate/array' 
-  def index
-   @conversations = conversation.paginate(:page => params[:page], per_page: 3)
-  # @messages = message.paginate(:page => params[:page], per_page: 3)
-  end
+  # require 'will_paginate/array' 
+  # def index
+  # @conversations = conversation.paginate(:page => params[:page], per_page: 3)
+  # # @messages = message.paginate(:page => params[:page], per_page: 3)
+  # end
   
   def create
     recipients = User.where(id: conversation_params[:recipients])
