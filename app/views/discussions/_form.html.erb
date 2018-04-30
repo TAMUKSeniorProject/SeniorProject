@@ -1,3 +1,13 @@
+<% if !current_user.first_post_approved %>
+<div class="card border-info mb-3">
+  <div class="card-header text-center">Attention!</div>
+  <div class="card-body text-info">
+    <h5 class="card-title"></h5>
+    <p class="card-text">We noticed this is your first post. Once submitted, you must wait for admin approval for it to display to all users. Afterwards, all subsequent posts
+  will be available to the community automatically.</p>
+  </div>
+</div>
+<% end %>
 
 <%= simple_form_for(@discussion) do |f| %>
   <%= f.error_notification %>

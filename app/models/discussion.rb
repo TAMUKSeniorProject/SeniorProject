@@ -9,7 +9,7 @@ class Discussion < ApplicationRecord
     validates :title, :content, presence: true
     resourcify
     
-    TOPICS = ['Personal Ad', 'Club Meeting', 'Free Food', 'Food Sale', 'Bake Sale', 'Roommate']
+    TOPICS = ['Club Meeting', 'Free Food', 'Food Sale', 'University Event', 'Extra-Credit', 'Job-Related', 'Info-Session','Other']
     acts_as_taggable
     acts_as_taggable_on :topics
     #pg_search_scope :quick_search, against: [:title, :content], associated_against: {topics: [:name]}
