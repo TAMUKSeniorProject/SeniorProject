@@ -23,8 +23,8 @@
   </div>
   
   <div class= "form-group">
-    <%= f.label :channel %>
-    <%= f.input_field :channel_id, collection:@channels.map { |c| [c.channel, c.id] }, prompt: "Select channel" %>
+    <%= f.label :Category %>
+    <%= f.input_field :channel_id, collection:@channels.map { |c| [c.channel, c.id] }, prompt: "Select Category" %>
   </div>
   
   <p>Want your post to appear on our calendar? Fill in the event date here</p>

@@ -46,10 +46,22 @@
               <%end%>
             </li>
             <li class="nav-item active">
+              <%= link_to calendar_path, class: "nav-link" do %>
+                Calendar
+              <%end%>
+            </li>
+            <li class="nav-item active">
               <%= link_to mailbox_inbox_path, class: "nav-link" do %>
                 Inbox
               <%end%>
             </li>
+            <% if has_role?(:admin) %>
+            <li class="nav-item active">
+              <%= link_to moderation_path, class: "nav-link" do %>
+                Moderate
+              <%end%>
+            </li>
+            <% end %>
             <li class="nav-item active">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do%>
                 Log Out
