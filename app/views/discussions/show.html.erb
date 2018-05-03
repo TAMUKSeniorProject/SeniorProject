@@ -6,7 +6,12 @@
         <p><em><medium>
           by <%= @discussion.user.username %>
         </p></em></medium>
+        
         <div class="content"><%= markdown(@discussion.content) %></div>
+        <% if @discussion.image.present? %>
+        <div><%=link_to image_tag(@discussion.image.url(:medium)), @discussion.image.url %></div>
+        <% end %>
+        <br>
         <% if discussion_author(@discussion) || has_role?(:admin) %>
           <%= link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'btn btn-outline-secondary'%>
           <%= link_to 'Delete', discussion_path(@discussion), method: :delete, data: { confirm: "Delete discussion?" }, class:'btn btn-outline-secondary' %>

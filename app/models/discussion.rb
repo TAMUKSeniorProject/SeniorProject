@@ -5,6 +5,9 @@ class Discussion < ApplicationRecord
     has_many :replies, dependent: :destroy
     has_many :users, through: :replies
     
+    has_attached_file :image, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: "/images/:style/missing.png"
+    validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+    
     # You cannot submit a discussion post without having the title and content be filled
     validates :title, :content, presence: true
     resourcify

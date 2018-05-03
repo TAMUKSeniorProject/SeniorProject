@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420223624) do
+ActiveRecord::Schema.define(version: 20180503220443) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "channel"
@@ -22,11 +22,15 @@ ActiveRecord::Schema.define(version: 20180420223624) do
   create_table "discussions", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "user_id"
     t.integer  "channel_id"
     t.datetime "start_time"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
